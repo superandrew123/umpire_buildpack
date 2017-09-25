@@ -15,6 +15,6 @@ if ! [ -f $1/fohr_andrew.pem ]; then
 fi
 
 echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-cat $1/redis.arm >> fohr_andrew.pem
+cat $1/redis.arm >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
