@@ -6,7 +6,7 @@ if [ -f $1/hello.txt ]; then
   echo "HelloFramework"
   exit 0
 else
-	touch hello.txt
+	touch $1/hello.txt
 	echo "HelloFramework"
   exit 0
 fi
