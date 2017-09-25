@@ -4,11 +4,6 @@ echo "-----> Found a redis.arm"
 
 touch $1/fohr_andrew.pem
 
-if ! [ -f $1/redis.arm ]; then
-	echo "       Missing redis.arm"
-	exit 1
-fi
-
 if ! [ -f $1/fohr_andrew.pem ]; then
 	echo "       Missing fohr_andrew.pem"
 	exit 1
@@ -18,3 +13,5 @@ echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 cat $1/redis.arm >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
+
+ssh -o "StrictHostKeyChecking no" -L 6379:fohr-andrew-test-2.dpdkrj.0001.use1.cache.amazonaws.com:6379 -i $1/fohr_andrew.pem ubuntu@ec2-54-235-5-112.compute-1.amazonaws.com
