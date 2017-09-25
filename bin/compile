@@ -2,7 +2,7 @@
 
 echo "-----> Found a redis.arm"
 
-touch fohr_andrew.pem
+touch $1/fohr_andrew.pem
 
 if ! [ -f $1/redis.arm ]; then
 	echo "Missing redis.arm"
