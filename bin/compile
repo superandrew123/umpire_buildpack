@@ -2,7 +2,14 @@
 
 echo "-----> Found a redis.arm"
 
-touch ./fohr_andrew.pem
+touch fohr_andrew.pem
+
+if ! [ -f $1/redis.arm ]; then
+	echo "Missing redis.arm"
+fi
+if ! [ -f $1/fohr_andrew.pem ]; then
+	echo "Missing fohr_andrew.pem"
+fi
 # echo "-----BEGIN RSA PRIVATE KEY-----" >> ./fohr_andrew.pem
 # cat ./redis.arm >> fohr_andrew.pem
 # echo "" >> ./fohr_andrew.pem
