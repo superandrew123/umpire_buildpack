@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
+cat << EOF
+default_process_types:
+  TestPack: established connections
+EOF
