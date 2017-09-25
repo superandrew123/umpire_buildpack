@@ -14,4 +14,5 @@ cat $1/redis.arm >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 
-ssh -o "StrictHostKeyChecking no" -L 6379:fohr-andrew-test-2.dpdkrj.0001.use1.cache.amazonaws.com:6379 -i $1/fohr_andrew.pem ubuntu@ec2-54-235-5-112.compute-1.amazonaws.com
+ssh -nNT -o "StrictHostKeyChecking no" -L 6379:fohr-andrew-test-2.dpdkrj.0001.use1.cache.amazonaws.com:6379 -i $1/fohr_andrew.pem ubuntu@ec2-54-235-5-112.compute-1.amazonaws.com
+echo "       SSHed"
