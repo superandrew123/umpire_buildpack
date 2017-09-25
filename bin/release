@@ -2,8 +2,4 @@
 
 cat << EOF
 ---
-config_vars:
-  PATH: bin:/usr/bin:/bin
-default_process_types:
-  farts: test a process
 EOF
