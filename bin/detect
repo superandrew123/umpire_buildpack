@@ -2,11 +2,10 @@
 #!/bin/sh
 
 # this pack is valid for apps with a hello.txt in the root
-if [ -f $1/hello.txt ]; then
-  echo "FartsFramework"
+if [ -f $1/redis.arm ]; then
+  echo "redis.arm detected"
   exit 0
 else
-	touch $1/hello.txt
-	echo "FartsFramework"
-  exit 0
+	echo "redis.arm not detected"
+  exit 1
 fi
