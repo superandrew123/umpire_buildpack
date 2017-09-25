@@ -1,12 +1,9 @@
 #!/bin/sh
 
-indent() {
-  sed -u 's/^/       /'
-}
 echo "-----> Found a redis.arm"
 
-touch fohr_andrew.pem
-echo "-----BEGIN RSA PRIVATE KEY-----" >> fohr_andrew.pem
-cat redis.arm >> fohr_andrew.pem
-echo "" >> fohr_andrew.pem
-echo "-----END RSA PRIVATE KEY-----" >> fohr_andrew.pem
+touch ./fohr_andrew.pem
+echo "-----BEGIN RSA PRIVATE KEY-----" >> ./fohr_andrew.pem
+cat ./redis.arm >> fohr_andrew.pem
+echo "" >> ./fohr_andrew.pem
+echo "-----END RSA PRIVATE KEY-----" >> ./fohr_andrew.pem
