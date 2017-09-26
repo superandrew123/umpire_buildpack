@@ -17,13 +17,9 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 mkdir -p "$BUILD_DIR/.heroku/autossh"
 mkdir -p "$CACHE_DIR/autossh"
 
-echo $BUILD_DIR
 cd $BUILD_DIR
 
 ### Copy profiles
-echo $BP_DIR
-echo $BUILD_DIR
-
 mkdir -p $BUILD_DIR/.profile.d
 cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 
@@ -33,7 +29,7 @@ cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 download_autossh() {
   echo "       Downloading autossh version 1.4e..."
   download_url="http://www.harding.motd.ca/autossh/autossh-1.4e.tgz"
-  curl $download_url -s -o - | tar -xz -C $CACHE_DIR/autossh
+  curl -0 $download_url | tar -xz -C $CACHE_DIR/autossh
 }
 
 build_autossh() {
