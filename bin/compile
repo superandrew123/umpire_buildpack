@@ -21,12 +21,12 @@ echo $BUILD_DIR
 cd $BUILD_DIR
 
 ### Copy profiles
+echo $BP_DIR
+echo $BUILD_DIR
 
 mkdir -p $BUILD_DIR/.profile.d
 cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 
-echo $BP_DIR
-echo $BUILD_DIR
 
 ### Installation
 
