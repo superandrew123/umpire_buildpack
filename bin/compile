@@ -21,7 +21,7 @@ cd $BUILD_DIR
 
 ### Copy profiles
 mkdir -p $BUILD_DIR/.profile.d
-cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
+cp $BP_DIR/* $BUILD_DIR/.profile.d/
 
 
 ### Installation
