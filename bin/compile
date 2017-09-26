@@ -17,15 +17,16 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 mkdir -p "$BUILD_DIR/.heroku/autossh"
 mkdir -p "$CACHE_DIR/autossh"
 
-echo ${ls -lah}
-exit 1
-
+echo $BUILD_DIR
 cd $BUILD_DIR
 
 ### Copy profiles
 
 mkdir -p $BUILD_DIR/.profile.d
 cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
+
+echo $BP_DIR
+echo $BUILD_DIR
 
 ### Installation
 
