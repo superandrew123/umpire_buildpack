@@ -14,14 +14,11 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
-echo $BUILD_DIR
-echo $CACHE_DIR
-echo $ENV_DIR
-echo $BP_DIR
-exit 1
-
 mkdir -p "$BUILD_DIR/.heroku/autossh"
 mkdir -p "$CACHE_DIR/autossh"
+
+echo ls -lah
+exit 1
 
 cd $BUILD_DIR
 
