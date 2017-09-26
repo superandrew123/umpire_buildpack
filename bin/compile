@@ -1,16 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
 
-
-
-echo "-----> Installing autossh"
 ### Configure environment
 
-echo "       Always exit on errors"
-# set -o errexit    # always exit on error
-echo "       Always exit piping errors"
-# set -o pipefail   # don't ignore exit codes when piping output
-echo "       Always exit unsetting variables"
-# set -o nounset    # fail on unset variables
+set -o errexit    # always exit on error
+set -o pipefail   # don't ignore exit codes when piping output
+set -o nounset    # fail on unset variables
 
 ### Configure directories
 
@@ -19,10 +14,16 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
+echo BUILD_DIR
+echo CACHE_DIR
+echo ENV_DIR
+echo BP_DIR
+exit 1
+
 mkdir -p "$BUILD_DIR/.heroku/autossh"
 mkdir -p "$CACHE_DIR/autossh"
 
-cd $BUILD_DIRherok
+cd $BUILD_DIR
 
 ### Copy profiles
 
@@ -34,7 +35,7 @@ cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 download_autossh() {
   echo "       Downloading autossh version 1.4e..."
   download_url="http://www.harding.motd.ca/autossh/autossh-1.4e.tgz"
-  curl $download_url -s -O | tar -xz -C $CACHE_DIR/autossh
+  curl $download_url -s -o - | tar -xz -C $CACHE_DIR/autossh
 }
 
 build_autossh() {
@@ -63,7 +64,6 @@ if [ ! -f $CACHE_DIR/autossh/autossh-1.4e/autossh ]; then
 fi
 
 install_autossh
-
 
 
 echo "-----> Found a redis.arm"
