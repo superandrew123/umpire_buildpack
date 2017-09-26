@@ -6,11 +6,11 @@ echo "-----> Installing autossh"
 ### Configure environment
 
 echo "       Always exit on errors"
-set -o errexit    # always exit on error
-echo "       Always exit piping erros"
-set -o pipefail   # don't ignore exit codes when piping output
+# set -o errexit    # always exit on error
+echo "       Always exit piping errors"
+# set -o pipefail   # don't ignore exit codes when piping output
 echo "       Always exit unsetting variables"
-set -o nounset    # fail on unset variables
+# set -o nounset    # fail on unset variables
 
 ### Configure directories
 
