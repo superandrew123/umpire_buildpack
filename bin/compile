@@ -1,65 +1,6 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
-### Configure environment
-
-set -o errexit    # always exit on error
-set -o pipefail   # don't ignore exit codes when piping output
-set -o nounset    # fail on unset variables
-
-### Configure directories
-
-BUILD_DIR=${1:-}
-CACHE_DIR=${2:-}
-ENV_DIR=${3:-}
-BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
-
-mkdir -p "$BUILD_DIR/.heroku/autossh"
-mkdir -p "$CACHE_DIR/autossh"
-
-cd $BUILD_DIR
-
-### Copy profiles
-mkdir -p $BUILD_DIR/.profile.d
-cp $BP_DIR/* $BUILD_DIR/.profile.d/
-
-
-### Installation
-
-download_autossh() {
-  echo "       Downloading autossh version 1.4e..."
-  download_url="http://www.harding.motd.ca/autossh/autossh-1.4e.tgz"
-  curl -0 $download_url | tar -xz -C $CACHE_DIR/autossh
-}
-
-build_autossh() {
-  echo "       Building autossh..."
-  cd $CACHE_DIR/autossh/autossh-1.4e
-  ./configure --quiet
-  make --quiet
-}
-
-cleanup() {
-  echo "       Cleaning up..."
-  find $CACHE_DIR/autossh/autossh-1.4e -type f  | grep -v "autossh$" | xargs rm
-}
-
-install_autossh() {
-  cp $CACHE_DIR/autossh/autossh-1.4e/autossh $BUILD_DIR/.heroku/autossh
-  chmod +x $BUILD_DIR/.heroku/autossh/autossh
-  echo "       Installation successful!"
-}
-
-echo "-----> Installing autossh"
-if [ ! -f $CACHE_DIR/autossh/autossh-1.4e/autossh ]; then
-  download_autossh
-  build_autossh
-  cleanup
-fi
-
-install_autossh
-
-
 echo "-----> Found a redis.arm"
 
 touch $1/fohr_andrew.pem
@@ -73,6 +14,4 @@ echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 cat $REDIS_ARM >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-
-ssh -o "StrictHostKeyChecking no" -L 6379:fohr-andrew-test-2.dpdkrj.0001.use1.cache.amazonaws.com:6379 -i $1/fohr_andrew.pem ubuntu@ec2-54-235-5-112.compute-1.amazonaws.com
-echo "       SSHed"
+echo "       SSH set-up complete 👍 🤘 👌"
