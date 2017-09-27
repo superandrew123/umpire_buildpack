@@ -1,17 +1,10 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
-echo "-----> Found a redis.arm"
+# touch $1/fohr_andrew.pem
 
-touch $1/fohr_andrew.pem
-
-if ! [ -f $1/fohr_andrew.pem ]; then
-	echo "       Missing fohr_andrew.pem"
-	exit 1
-fi
-
-echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-cat $REDIS_ARM >> $1/fohr_andrew.pem
-echo "" >> $1/fohr_andrew.pem
-echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-echo "       SSH set-up complete 👍 🤘 👌"
+# echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
+# cat $REDIS_ARM >> $1/fohr_andrew.pem
+# echo "" >> $1/fohr_andrew.pem
+# echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
+# echo "       SSH set-up complete 👍 🤘 👌"
