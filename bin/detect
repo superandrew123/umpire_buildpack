@@ -1,5 +1,5 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
 
-#!/bin/sh
-
-# No validations needed, exits happen on release if anything is broken
+echo "autossh"
 exit 0
