@@ -1,65 +1,65 @@
-#!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir> <env-dir>
+# #!/usr/bin/env bash
+# # bin/compile <build-dir> <cache-dir> <env-dir>
 
-### Configure environment
+# ### Configure environment
 
-set -o errexit    # always exit on error
-set -o pipefail   # don't ignore exit codes when piping output
-set -o nounset    # fail on unset variables
+# set -o errexit    # always exit on error
+# set -o pipefail   # don't ignore exit codes when piping output
+# set -o nounset    # fail on unset variables
 
-### Configure directories
+# ### Configure directories
 
-BUILD_DIR=${1:-}
-CACHE_DIR=${2:-}
-ENV_DIR=${3:-}
-BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
+# BUILD_DIR=${1:-}
+# CACHE_DIR=${2:-}
+# ENV_DIR=${3:-}
+# BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
-mkdir -p "$BUILD_DIR/.heroku/autossh"
-mkdir -p "$CACHE_DIR/autossh"
+# mkdir -p "$BUILD_DIR/.heroku/autossh"
+# mkdir -p "$CACHE_DIR/autossh"
 
-cd $BUILD_DIR
+# cd $BUILD_DIR
 
-### Copy profiles
+# ### Copy profiles
 
-mkdir -p $BUILD_DIR/.profile.d
-echo BP_DIR
-a=$(ls -a $BP_DIR)
-echo $a
-b=$(ls -a $BUILD_DIR)
-echo $b
-cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
+# mkdir -p $BUILD_DIR/.profile.d
+# echo BP_DIR
+# a=$(ls -a $BP_DIR)
+# echo $a
+# b=$(ls -a $BUILD_DIR)
+# echo $b
+# cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 
-### Installation
+# ### Installation
 
-download_autossh() {
-  echo "       Downloading autossh version 1.4e..."
-  download_url="https://s3.amazonaws.com/stack-aws/tools/autossh-1.4e.tgz"
-  curl $download_url -s -o - | tar -xz -C $CACHE_DIR/autossh
-}
+# download_autossh() {
+#   echo "       Downloading autossh version 1.4e..."
+#   download_url="https://s3.amazonaws.com/stack-aws/tools/autossh-1.4e.tgz"
+#   curl $download_url -s -o - | tar -xz -C $CACHE_DIR/autossh
+# }
 
-build_autossh() {
-  echo "       Building autossh..."
-  cd $CACHE_DIR/autossh/autossh-1.4e
-  ./configure --quiet
-  make --quiet
-}
+# build_autossh() {
+#   echo "       Building autossh..."
+#   cd $CACHE_DIR/autossh/autossh-1.4e
+#   ./configure --quiet
+#   make --quiet
+# }
 
-cleanup() {
-  echo "       Cleaning up..."
-  find $CACHE_DIR/autossh/autossh-1.4e -type f  | grep -v "autossh$" | xargs rm
-}
+# cleanup() {
+#   echo "       Cleaning up..."
+#   find $CACHE_DIR/autossh/autossh-1.4e -type f  | grep -v "autossh$" | xargs rm
+# }
 
-install_autossh() {
-  cp $CACHE_DIR/autossh/autossh-1.4e/autossh $BUILD_DIR/.heroku/autossh
-  chmod +x $BUILD_DIR/.heroku/autossh/autossh
-  echo "       Installation successful!"
-}
+# install_autossh() {
+#   cp $CACHE_DIR/autossh/autossh-1.4e/autossh $BUILD_DIR/.heroku/autossh
+#   chmod +x $BUILD_DIR/.heroku/autossh/autossh
+#   echo "       Installation successful!"
+# }
 
-echo "-----> Installing autossh"
-if [ ! -f $CACHE_DIR/autossh/autossh-1.4e/autossh ]; then
-  download_autossh
-  build_autossh
-  cleanup
-fi
+# echo "-----> Installing autossh"
+# if [ ! -f $CACHE_DIR/autossh/autossh-1.4e/autossh ]; then
+#   download_autossh
+#   build_autossh
+#   cleanup
+# fi
 
-install_autossh
+# install_autossh
