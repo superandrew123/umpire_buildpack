@@ -21,45 +21,4 @@
 
 # ### Copy profiles
 
-# mkdir -p $BUILD_DIR/.profile.d
-# echo BP_DIR
-# a=$(ls -a $BP_DIR)
-# echo $a
-# b=$(ls -a $BUILD_DIR)
-# echo $b
-# cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
-
-# ### Installation
-
-# download_autossh() {
-#   echo "       Downloading autossh version 1.4e..."
-#   download_url="https://s3.amazonaws.com/stack-aws/tools/autossh-1.4e.tgz"
-#   curl $download_url -s -o - | tar -xz -C $CACHE_DIR/autossh
-# }
-
-# build_autossh() {
-#   echo "       Building autossh..."
-#   cd $CACHE_DIR/autossh/autossh-1.4e
-#   ./configure --quiet
-#   make --quiet
-# }
-
-# cleanup() {
-#   echo "       Cleaning up..."
-#   find $CACHE_DIR/autossh/autossh-1.4e -type f  | grep -v "autossh$" | xargs rm
-# }
-
-# install_autossh() {
-#   cp $CACHE_DIR/autossh/autossh-1.4e/autossh $BUILD_DIR/.heroku/autossh
-#   chmod +x $BUILD_DIR/.heroku/autossh/autossh
-#   echo "       Installation successful!"
-# }
-
-# echo "-----> Installing autossh"
-# if [ ! -f $CACHE_DIR/autossh/autossh-1.4e/autossh ]; then
-#   download_autossh
-#   build_autossh
-#   cleanup
-# fi
-
-# install_autossh
+apt-get install autossh
