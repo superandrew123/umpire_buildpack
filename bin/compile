@@ -12,5 +12,3 @@ if ! [ -f $1/fohr_andrew.pem ]; then
 	echo "       Missing fohr_andrew.pem"
 	exit 1
 fi
-
-apt-get install autossh
