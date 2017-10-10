@@ -2,7 +2,7 @@
 
 echo "-----> Found a redis.arm"
 echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-cat $1/redis.arm >> $1/fohr_andrew.pem
+echo $REDIS_ARM >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 
