@@ -11,10 +11,10 @@ echo "       Created pem"
 pem=$1/fohr_andrew.pem
 minimum_size=1000
 
-if [ $minimum_size -ge $(wc -c <"$pem") ]; then
-	echo "       pem error -- value not written to file"
-	exit 1
-fi
+# if [ $minimum_size -ge $(wc -c <"$pem") ]; then
+# 	echo "       pem error -- value not written to file"
+# 	exit 1
+# fi
 
 if ! [ -f $1/fohr_andrew.pem ]; then
 	echo "       Missing fohr_andrew.pem"
