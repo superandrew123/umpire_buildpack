@@ -1,12 +1,12 @@
 # #!/usr/bin/env bash
 touch $1/fohr_andrew.pem
 
-echo "      Creating pem"
+echo "       Creating pem"
 echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 echo $REDIS_ARM >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-echo "      Created pem"
+echo "       Created pem"
 
 pem=$1/fohr_andrew.pem
 minimum_size=1000
