@@ -13,7 +13,11 @@ minimum_size=1000
 
 if [ $minimum_size -ge $(wc -c <"$pem") ]; then
 	echo "       pem error -- value not written to file"
-	exit 1
+	echo "       pem error -- value not written to file"
+	echo "       pem error -- value not written to file"
+	echo "       pem error -- value not written to file"
+	echo "       pem error -- value not written to file"
+	echo "       pem error -- value not written to file"
 fi
 
 if ! [ -f $1/fohr_andrew.pem ]; then
