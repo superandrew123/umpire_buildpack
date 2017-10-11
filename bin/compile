@@ -1,11 +1,20 @@
 # #!/usr/bin/env bash
 touch $1/fohr_andrew.pem
 
-echo "-----> Found a redis.arm"
+echo "      Creating pem"
 echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 echo $REDIS_ARM >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
+echo "      Created pem"
+
+pem=$1/fohr_andrew.pem
+minimum_size=1000
+
+if [ $minimum_size -ge $pem]; then
+	echo "       pem error -- value not written to file"
+	exit 1
+fi
 
 if ! [ -f $1/fohr_andrew.pem ]; then
 	echo "       Missing fohr_andrew.pem"
