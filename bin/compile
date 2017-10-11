@@ -1,12 +1,11 @@
 # #!/usr/bin/env bash
+touch $1/fohr_andrew.pem
 
 echo "-----> Found a redis.arm"
 echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
 echo $REDIS_ARM >> $1/fohr_andrew.pem
 echo "" >> $1/fohr_andrew.pem
 echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-
-touch $1/fohr_andrew.pem
 
 if ! [ -f $1/fohr_andrew.pem ]; then
 	echo "       Missing fohr_andrew.pem"
