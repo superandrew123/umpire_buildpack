@@ -11,7 +11,7 @@ echo "      Created pem"
 pem=$1/fohr_andrew.pem
 minimum_size=1000
 
-if [ $minimum_size -ge $pem]; then
+if [ $minimum_size -ge $pem ]; then
 	echo "       pem error -- value not written to file"
 	exit 1
 fi
