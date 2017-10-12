@@ -1,27 +1,27 @@
-# #!/usr/bin/env bash
-# touch $1/fohr_andrew.pem
+# # #!/usr/bin/env bash
+# # touch $1/fohr_andrew.pem
 
-echo "       Creating pem"
-echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-echo $REDIS_ARM
-echo $REDIS_ARM >> $1/fohr_andrew.pem
-echo "" >> $1/fohr_andrew.pem
-echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
-echo "       Created pem"
+# echo "       Creating pem"
+# echo "-----BEGIN RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
+# echo $REDIS_ARM
+# echo $REDIS_ARM >> $1/fohr_andrew.pem
+# echo "" >> $1/fohr_andrew.pem
+# echo "-----END RSA PRIVATE KEY-----" >> $1/fohr_andrew.pem
+# echo "       Created pem"
 
-pem=$1/fohr_andrew.pem
-minimum_size=1000
+# pem=$1/fohr_andrew.pem
+# minimum_size=1000
 
-if [ $minimum_size -ge $(wc -c <"$pem") ]; then
-	echo "       pem error -- value not written to file"
-	echo "       pem error -- value not written to file"
-	echo "       pem error -- value not written to file"
-	echo "       pem error -- value not written to file"
-	echo "       pem error -- value not written to file"
-	echo "       pem error -- value not written to file"
-fi
+# if [ $minimum_size -ge $(wc -c <"$pem") ]; then
+# 	echo "       pem error -- value not written to file"
+# 	echo "       pem error -- value not written to file"
+# 	echo "       pem error -- value not written to file"
+# 	echo "       pem error -- value not written to file"
+# 	echo "       pem error -- value not written to file"
+# 	echo "       pem error -- value not written to file"
+# fi
 
-if ! [ -f $1/fohr_andrew.pem ]; then
-	echo "       Missing fohr_andrew.pem"
-	exit 1
-fi
+# if ! [ -f $1/fohr_andrew.pem ]; then
+# 	echo "       Missing fohr_andrew.pem"
+# 	exit 1
+# fi
